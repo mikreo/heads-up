@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Heads Up Clone</title>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            height: 100dvh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.2em;
+        }
+
+        h1, h2 {
+            margin: 0;
+        }
+
+        kbd {
+            background-color: #eee;
+            border-radius: 3px;
+            border: 1px solid #b4b4b4;
+            display: inline-block;
+            font-weight: 700;
+            padding: 2px 4px;
+            margin-inline-end: 5px;
+        }
+
+        #setupcontainer {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            height: 100dvh;
+            width: 100dvw;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #decktextinput {
+            width: min(600px, 80dvw);
+            height: 200px
+        }
+
+
+        #gamecontainer {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            height: 100dvh;
+            width: 100dvw;
+            transition: background-color 0.3s ease-out;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #text {
+            font-size: 10em;
+        }
+
+        #controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #timer {
+            font-size: 3em;
+        }
+
+        #endcontainer {
+            z-index: 1;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            height: 100dvh;
+            width: 100dvw;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #results {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: min(600px, 80dvw);
+            gap: 10px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .green {
+            background-color: forestgreen;
+        }
+
+        .blue {
+            background-color: cornflowerblue;
+        }
+
+        .redtext {
+            color: red;
+        }
+
+        .greentext {
+            color: forestgreen;
+        }
+
+        .hide {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="setupcontainer">
+        <h1>Main Menu</h1>
+        <div>
+            <label for="timerinput">Round length (seconds):</label>
+            <input type="number" value="60" min="15" id="timerinput">
+        </div>
+        <div>
+            <label for="presetselection">Select a preset:</label>
+            <select id="presetselection"></select>
+        </div>
+        <label for="decktextinput">Cards for deck (seperated with |):</label>
+        <textarea id="decktextinput"></textarea>
+        <button id="startbutton">Start</button>
+    </div>
+
+    <div id="gamecontainer">
+        <div id="text"></div>
+        <div id="controls">
+            <span><kbd>C</kbd>Correct</span>
+            <span><kbd>X</kbd>Skip</span>
+        </div>
+        <div id="timer"></div>
+    </div>
+
+    <div id="endcontainer" class="hide">
+        <h1>Results:</h1>
+        <h2 id="correct"></h1>
+        <h2 id="deckdone" class="hide">Deck Finished!</h1>
+        <div id="results"></div>
+        <button id="playagain">Play again with the same deck</button>
+        <button id="mainmenu">Main Menu</button>
+    </div>
+</body>
+
+</html>
